@@ -1,6 +1,8 @@
 # XPattern - **C**
 
-Welcome to the **Project Template** repository! This README provides user-friendly instructions for setting up, compiling, testing, and running a project using the Meson build system on Windows, macOS, and Linux systems. Please note that the Meson build system is required for successfully building this project.
+Fossil Standard Component Libraries (FSCL) by Fossil Logic represent the pinnacle of software development, embodying our commitment to quality, security, and practicality. These meticulously curated libraries serve as the cornerstone for crafting cutting-edge applications, offering a foundation built on excellence in code. With FSCL, Fossil Logic empowers developers to seamlessly integrate standardized components that elevate the overall performance and reliability of digital solutions, setting a new standard for software excellence.
+
+The XPattern library offers a pragmatic approach to solving common programming challenges, providing a set of versatile patterns and solutions tailored to streamline development. Whether you're dealing with lazy evaluation, constraints handling, or implementing observer patterns, XPattern equips you with the tools you need to build robust and adaptable software solutions. XPattern serves as a foundational building block for your software endeavors, offering essential core functionalities that simplify the development process and provide a solid framework for your applications. With XPattern, you can create software that not only meets your current requirements but also remains flexible enough to adapt to the evolving needs of your projects.
 
 ## Who is This For?
 
@@ -21,7 +23,7 @@ Before getting started, make sure you have the following installed:
 
 1. **Create a Wrap File**:
 
-Create a directory named subprojects in the root directory, next create a file named `tscl-x<name>-c.wrap` in the `subprojects` directory of your project with the following content:
+Create a directory named subprojects in the root directory, next create a file named `tscl-xpattern-c.wrap` in the `subprojects` directory of your project with the following content:
 
    ```bash
    # ================ #
