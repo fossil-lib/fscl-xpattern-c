@@ -1,4 +1,4 @@
-code = files('module.c')
+code = files('lazy.c', 'observer.c', 'contract.c')
 
 lib = static_library('fscl-xpattern-c',
     code,
