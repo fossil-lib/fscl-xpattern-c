@@ -1,4 +1,4 @@
-# Project Template README
+# XPattern - **C**
 
 Welcome to the **Project Template** repository! This README provides user-friendly instructions for setting up, compiling, testing, and running a project using the Meson build system on Windows, macOS, and Linux systems. Please note that the Meson build system is required for successfully building this project.
 
@@ -28,11 +28,11 @@ Create a directory named subprojects in the root directory, next create a file n
    #  FSCL Wrap File. #
    # ================ #
    [wrap-git]
-   url = https://github.com/fossil-lib/fscl-<name>-c.git
+   url = https://github.com/fossil-lib/fscl-xpattern-c.git
    revision = main
    
    [provide]
-   fscl-x<name>-c = fscl_x<name>_c_dep
+   fscl-xpattern-c = fscl_xpattern_c_dep
    ```
 
 2. **Integrate Wrap File in Meson Build**:
@@ -42,7 +42,7 @@ Create a directory named subprojects in the root directory, next create a file n
        default_options : ['warning_level=3'])
 
    exe = executable('my_project', 'my_project.c',
-       dependencies : dependency('fscl-x<name>-c'), # add this line
+       dependencies : dependency('fscl-xpattern-c'), # add this line
        install : true)
 
    test('basic', exe)
@@ -68,11 +68,11 @@ meson setup builddir -Dwith_test=enabled
 
 ## Contributing
 
-If you're interested in contributing to this project, please consider opening pull requests or creating issues on the [GitHub repository](https://github.com/dreamer-coding-555/meson-lib-c).
+If you're interested in contributing to this project, please consider opening pull requests or creating issues on the [GitHub repository](https://github.com/fossil-lib/fscl-xpattern-c).
 
 ## Feedback and Support
 
-If you encounter any issues, have questions, or would like to provide feedback, don't hesitate to open an issue on the [GitHub repository](https://github.com/dreamer-coding-555/meson-lib-c/issues).
+If you encounter any issues, have questions, or would like to provide feedback, don't hesitate to open an issue on the [GitHub repository](https://github.com/fossil-lib/fscl-xpattern-c/issues).
 
 ## License
 
