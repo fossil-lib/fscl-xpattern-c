@@ -76,7 +76,7 @@ const char* fscl_lazy_force_string(clazy *lazy) {
     return lazy->cache.memoized_string.data;
 }
 
-// Function to destroy the resources associated with a string value
+// Function to destroy the resources associated with a lazy string value
 void fscl_lazy_erase(clazy *lazy) {
     if (lazy->is_evaluated) {
         switch (lazy->type) {
@@ -87,6 +87,7 @@ void fscl_lazy_erase(clazy *lazy) {
                 // No resources to free for other types
                 break;
         }
+        lazy->is_evaluated = 0;  // Reset evaluation status
     }
 }
 
@@ -116,9 +117,13 @@ void fscl_lazy_set_int(clazy *lazy, int value) {
 
 // Setter function for lazy string
 void fscl_lazy_set_cstring(clazy *lazy, const char *value) {
+    fscl_lazy_erase(lazy);  // Free existing memory if any
     lazy->is_evaluated = 1;
     size_t len = strlen(value);
     lazy->data.string_value.data = malloc(len + 1);
+    if (lazy->data.string_value.data == NULL) {
+        puts("Allocation error encountered while allocating a string");  // Handle memory allocation failure
+    }
     strcpy(lazy->data.string_value.data, value);
     lazy->cache.memoized_string = lazy->data.string_value;
 }
