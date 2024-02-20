@@ -22,7 +22,13 @@ void fscl_observe_create(csubject* subject) {
 
 // Function to add an observer to the subject
 void fscl_observe_add_observer(csubject* subject, cobserver* observer) {
-    subject->observers = (cobserver**)realloc(subject->observers, (subject->numObservers + 1) * sizeof(cobserver*));
+    cobserver** newObservers = (cobserver**)realloc(subject->observers, (subject->numObservers + 1) * sizeof(cobserver*));
+    if (newObservers == NULL) {
+        puts("Memory allocation error while attempting to add observer");
+        return;
+    }
+
+    subject->observers = newObservers;
     subject->observers[subject->numObservers++] = observer;
 }
 
@@ -30,13 +36,15 @@ void fscl_observe_add_observer(csubject* subject, cobserver* observer) {
 void fscl_observe_remove_observer(csubject* subject, cobserver* observer) {
     for (int i = 0; i < subject->numObservers; ++i) {
         if (subject->observers[i] == observer) {
-            // Shift remaining elements to fill the gap
             for (int j = i; j < subject->numObservers - 1; ++j) {
                 subject->observers[j] = subject->observers[j + 1];
             }
-            // Resize the array
-            subject->observers = (cobserver**)realloc(subject->observers, (subject->numObservers - 1) * sizeof(cobserver*));
-            subject->numObservers--;
+
+            cobserver** newObservers = (cobserver**)realloc(subject->observers, (subject->numObservers - 1) * sizeof(cobserver*));
+            if (newObservers != NULL || subject->numObservers - 1 == 0) {
+                subject->observers = newObservers;
+                subject->numObservers--;
+            }
             break;
         }
     }
