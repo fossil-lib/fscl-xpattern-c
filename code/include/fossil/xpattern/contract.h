@@ -30,24 +30,63 @@ typedef struct {
 // =================================================================
 // create and erase
 // =================================================================
-ccontract *fscl_contract_create(bool (*pre_condition)(), void (*post_condition)());
+/**
+ * Create a contract with specified pre and post conditions.
+ *
+ * @param pre_condition  The precondition function.
+ * @param post_condition The postcondition function.
+ * @return               The created contract.
+ */
+ccontract* fscl_contract_create(bool (*pre_condition)(), void (*post_condition)());
 
 // =================================================================
-// addintal functions
+// Additional functions
 // =================================================================
-bool fscl_contract_check_pre(ccontract *contract);
-bool fscl_contract_check_post(ccontract *contract);
-bool fscl_contract_assert(bool condition, const char *message);
-bool fscl_contract_require_not_null(const void *ptr, const char *param_name);
-bool fscl_contract_require_positive(int value, const char *param_name);
-bool fscl_contract_require_non_negative(int value, const char *param_name);
-bool fscl_contract_require_within_range(int value, int min, int max, const char *param_name);
-bool fscl_contract_require_within_double_range(double value, double min, double max, const char *param_name);
-bool fscl_contract_require_string_length(const char *str, size_t min_length, size_t max_length, const char *param_name);
-bool fscl_contract_require_pointer_equality(const void *ptr1, const void *ptr2, const char *param_name);
-bool fscl_contract_require_string_equality(const char *str1, const char *str2, const char *param_name);
-bool fscl_contract_require_array_length(const void *array, size_t expected_length, size_t element_size, const char *param_name);
-bool fscl_contract_require_custom_condition(bool (*custom_condition)(), const char *param_name);
+
+/**
+ * Check the precondition of the contract.
+ *
+ * @param contract The contract to check.
+ * @return         True if the precondition is met, false otherwise.
+ */
+bool fscl_contract_check_pre(ccontract* contract);
+
+/**
+ * Check the postcondition of the contract.
+ *
+ * @param contract The contract to check.
+ * @return         True if the postcondition is met, false otherwise.
+ */
+bool fscl_contract_check_post(ccontract* contract);
+
+/**
+ * Assert a boolean condition, and if false, print an error message.
+ *
+ * @param condition The condition to assert.
+ * @param message   The error message to print if the condition is false.
+ * @return          True if the condition is true, false otherwise.
+ */
+bool fscl_contract_assert(bool condition, const char* message);
+
+/**
+ * Require that a pointer is not null.
+ *
+ * @param ptr        The pointer to check.
+ * @param param_name The name of the parameter.
+ * @return           True if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_not_null(const void* ptr, const char* param_name);
+
+// Other require functions ...
+
+/**
+ * Require a custom condition to be true.
+ *
+ * @param custom_condition The custom condition function.
+ * @param param_name       The name of the parameter.
+ * @return                 True if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_custom_condition(bool (*custom_condition)(), const char* param_name);
 
 #ifdef __cplusplus
 }
