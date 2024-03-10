@@ -88,6 +88,97 @@ bool fscl_contract_require_not_null(const void* ptr, const char* param_name);
  */
 bool fscl_contract_require_custom_condition(bool (*custom_condition)(), const char* param_name);
 
+/**
+ * Require that a pointer is not null.
+ *
+ * @param ptr The pointer to check.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_not_null(const void *ptr, const char *param_name);
+
+/**
+ * Require that an integer value is positive.
+ *
+ * @param value The integer value to check.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_positive(int value, const char *param_name);
+
+/**
+ * Require that an integer value is non-negative.
+ *
+ * @param value The integer value to check.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_non_negative(int value, const char *param_name);
+
+/**
+ * Require that an integer value is within a specified range.
+ *
+ * @param value The integer value to check.
+ * @param min The minimum allowed value.
+ * @param max The maximum allowed value.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_within_range(int value, int min, int max, const char *param_name);
+
+/**
+ * Require that a double value is within a specified range.
+ *
+ * @param value The double value to check.
+ * @param min The minimum allowed value.
+ * @param max The maximum allowed value.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_within_double_range(double value, double min, double max, const char *param_name);
+
+/**
+ * Require that the length of a string is within a specified range.
+ *
+ * @param str The string to check.
+ * @param min_length The minimum allowed length.
+ * @param max_length The maximum allowed length.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_string_length(const char *str, size_t min_length, size_t max_length, const char *param_name);
+
+/**
+ * Require that two pointers are equal.
+ *
+ * @param ptr1 The first pointer.
+ * @param ptr2 The second pointer.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_pointer_equality(const void *ptr1, const void *ptr2, const char *param_name);
+
+/**
+ * Require that two strings are equal.
+ *
+ * @param str1 The first string.
+ * @param str2 The second string.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_string_equality(const char *str1, const char *str2, const char *param_name);
+
+/**
+ * Require that the length of an array is equal to the expected length.
+ *
+ * @param array The array to check.
+ * @param expected_length The expected length of the array.
+ * @param element_size The size of each element in the array.
+ * @param param_name The name of the parameter for error reporting.
+ * @return true if the requirement is met, false otherwise.
+ */
+bool fscl_contract_require_array_length(const void *array, size_t expected_length, size_t element_size, const char *param_name);
+
 #ifdef __cplusplus
 }
 #endif
